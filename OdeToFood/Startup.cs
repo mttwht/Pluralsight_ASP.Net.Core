@@ -28,6 +28,10 @@ namespace OdeToFood
                 app.UseDeveloperExceptionPage();
             }
 
+            //app.UseDefaultFiles();
+            //app.UseStaticFiles();
+            app.UseFileServer(); // shorthand for two lines above
+
             app.Run(async (context) =>
             {
                 var greeting = greeter.GetMessageOfTheDay();
