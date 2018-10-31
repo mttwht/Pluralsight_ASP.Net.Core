@@ -23,32 +23,10 @@ namespace OdeToFood
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, IGreeter greeter, ILogger<Startup> logger)
         {
-            //if (env.IsDevelopment())
-            //{
-            //    app.UseDeveloperExceptionPage();
-            //}
-
-            app.Use(next =>
+            if (env.IsDevelopment())
             {
-                return async context =>
-                {
-                    logger.LogInformation("Incoming request");
-                    if(context.Request.Path.StartsWithSegments("/mym"))
-                    {
-                        await context.Response.WriteAsync("Hit!");
-                        logger.LogInformation("Handled request");
-                    }
-                    else
-                    {
-                        await next(context);
-                        logger.LogInformation("Outgoing request");
-                    }
-                };
-            });
-
-            app.UseWelcomePage(new WelcomePageOptions {
-                Path="/wp",
-            });
+                app.UseDeveloperExceptionPage();
+            }
 
             app.Run(async (context) =>
             {
