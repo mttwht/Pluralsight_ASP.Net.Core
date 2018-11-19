@@ -6,8 +6,13 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace OdeToFood.Controllers
 {
+    //[Route("about")]
+    //[Route("[controller]")]
+    [Route("company/[controller]/[action]")]
     public class AboutController : Controller
     {
+        //[Route("address")]
+        //[Route("[action]")]
         public string Address()
         {
             return "Ireland";
