@@ -1,10 +1,17 @@
-﻿namespace OdeToFood.Controllers
+﻿using Microsoft.AspNetCore.Mvc;
+using OdeToFood.Models;
+
+namespace OdeToFood.Controllers
 {
-    public class HomeController
+    public class HomeController : Controller
     {
-        public string Index()
+        public IActionResult Index()
         {
-            return "Home => Index";
+            //return Content("Home => Index");
+
+            var model = new Restaurant { Id = 1, Name = "Token" };
+            
+            return new ObjectResult(model);
         }
     }
 }
