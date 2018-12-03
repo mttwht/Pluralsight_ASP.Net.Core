@@ -7,10 +7,16 @@
 <body>
     <h1>@Model.MessageOfTheDay</h1>
     <table>
-        @foreach (var restaurant in Model.Restaurants) {
+        @foreach (var restaurant in Model.Restaurants)
+        {
         <tr>
             <td>@restaurant.Id</td>
             <td>@restaurant.Name</td>
+            <td>
+                @*<a href="/home/details/@restaurant.Id">Details</a>*@
+                @*@Html.ActionLink("Details", "Details", new { id=restaurant.Id })*@
+                <a asp-action="Details" asp-route-id="@restaurant.Id">Details</a>
+            </td>
         </tr>
         }
     </table>
