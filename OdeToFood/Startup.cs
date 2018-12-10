@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Microsoft.IdentityModel.Protocols.OpenIdConnect;
 using OdeToFood.Data;
 using OdeToFood.Services;
 
@@ -32,9 +33,7 @@ namespace OdeToFood
                 options.DefaultChallengeScheme = OpenIdConnectDefaults.AuthenticationScheme;
             })
             .AddOpenIdConnect(options => {
-                options.ResponseType = "code";
-                options.Scope.Add("openid email");
-                _config.Bind("OpenID", options);
+                _config.Bind("OpenId", options);
             })
             .AddCookie();
 
