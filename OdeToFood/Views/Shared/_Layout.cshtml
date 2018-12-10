@@ -7,13 +7,21 @@
     <link href="~/node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
 </head>
 <body>
-    <div>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/">OdeToFood</a>
+            </div>
+            <div class="navbar-right">
+                <a class="btn btn-secondary" href="#">//Login/Logout</a>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
         @RenderBody()
+        <footer>
+            @RenderSection("footer", required: false)
+        </footer>
     </div>
-    <footer>
-        @RenderSection("footer", required:false)
-        @*@await Component.InvokeAsync("Greeter")*@
-        <vc:greeter></vc:greeter>
-    </footer>
 </body>
 </html>
