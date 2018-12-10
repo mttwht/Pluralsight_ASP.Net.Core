@@ -11,6 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Protocols.OpenIdConnect;
 using OdeToFood.Data;
+using OdeToFood.Middleware;
 using OdeToFood.Services;
 
 namespace OdeToFood
@@ -61,15 +62,11 @@ namespace OdeToFood
 
             app.UseStaticFiles();
 
+            app.UseNodeModules(env.ContentRootPath);
+
             app.UseAuthentication();
 
             app.UseMvc(ConfigureRoutes);
-
-            app.Run(async (context) =>
-            {
-                var greeting = greeter.GetMessageOfTheDay();
-                await context.Response.WriteAsync($"Not found");
-            });
         }
 
         private void ConfigureRoutes(IRouteBuilder routeBuilder)
